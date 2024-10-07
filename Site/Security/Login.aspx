@@ -72,7 +72,7 @@
     	        /* document.ready goes here */
 
 				var qrcode = new QRCode("divLoginQr", {
-					text: bitIdUri,
+					text: SwarmopsJS.unescape(bitIdUri),
 					width: 360,
 					height: 360
 				});
@@ -208,7 +208,7 @@
         <div class="login-page-logo"><asp:Image ID="ImageLogo" runat="server" ImageUrl="/Images/swarmops-logo-256px.png" Width="128"/></div>        
             <div class="box qrlogin">
                 <div class="content">
-                    <div align="center" id="divLoginQr" style="height: 400px; width: 400px; padding: 20px"></div>
+                    <div align="center" id="divLoginQr" style="height: 360px; width: 360px; padding: 20px"></div>
                     <div id="divLoginManual" style="display:none">
                         <h2><asp:Label runat="server" ID="LabelManualLoginHeader">Manual Login Header XYZ</asp:Label></h2>
                         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding-bottom:5px">
