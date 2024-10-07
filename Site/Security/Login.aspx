@@ -73,8 +73,8 @@
 
 				var qrcode = new QRCode("divLoginQr", {
 					text: bitIdUri,
-					width: 400,
-					height: 400
+					width: 360,
+					height: 360
 				});
 				//qrcode.makeCode(bitIdUri);
 
