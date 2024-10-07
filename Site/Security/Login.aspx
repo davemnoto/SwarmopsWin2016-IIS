@@ -46,6 +46,10 @@
     <!-- Swarmops common JS functions, incl. EasyUI behavior overrides -->
     <script language="javascript" type="text/javascript" src="/Scripts/Swarmops-v5.js?CacheId=<%= _cacheVersionMark %>" ></script>
 
+	<!-- QRCode package -->
+    <script language="javascript" type="text/javascript" src="/Scripts/qrcode.min.js" ></script>
+
+
     <!-- page title -->
 
 	<title>Swarmops Beta - Login</title>
@@ -63,9 +67,13 @@
         <asp:ScriptManager runat="server" ID="ScriptManagerBlahblah" />
 	    <script type="text/javascript">
 
+			var qrcode = new QRCode("divLoginQr");
+
     	    $(document).ready(function() {
 
     	        /* document.ready goes here */
+
+				qrcode.makeCode(bitIdUri);
 
     	        setTimeout(function() {
     	            recheckLogin();
@@ -197,7 +205,7 @@
         <div class="login-page-logo"><asp:Image ID="ImageLogo" runat="server" ImageUrl="/Images/swarmops-logo-256px.png" Width="128"/></div>        
             <div class="box qrlogin">
                 <div class="content">
-                    <div align="center" id="divLoginQr"><asp:Image ID="ImageBitIdQr" runat="server"/></div>
+                    <div align="center" id="divLoginQr"></div>
                     <div id="divLoginManual" style="display:none">
                         <h2><asp:Label runat="server" ID="LabelManualLoginHeader">Manual Login Header XYZ</asp:Label></h2>
                         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding-bottom:5px">

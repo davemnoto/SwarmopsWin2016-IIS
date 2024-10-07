@@ -230,8 +230,10 @@ namespace Swarmops.Pages.Security
 
             // TODO: need to NOT USE GOOGLE CHARTS for this but bring home a free QR package
 
+            /*
+
             this.ImageBitIdQr.ImageUrl =
-                "https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=" + HttpUtility.UrlEncode (bitIdUri);
+                "https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=" + HttpUtility.UrlEncode (bitIdUri);*/
         }
 
 
