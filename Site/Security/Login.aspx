@@ -67,13 +67,16 @@
         <asp:ScriptManager runat="server" ID="ScriptManagerBlahblah" />
 	    <script type="text/javascript">
 
-			var qrcode = new QRCode("divLoginQr");
-
     	    $(document).ready(function() {
 
     	        /* document.ready goes here */
 
-				qrcode.makeCode(bitIdUri);
+				var qrcode = new QRCode("divLoginQr", {
+					text: bitIdUrl,
+					width: 400,
+					height: 400
+				});
+				//qrcode.makeCode(bitIdUri);
 
     	        setTimeout(function() {
     	            recheckLogin();
@@ -205,7 +208,7 @@
         <div class="login-page-logo"><asp:Image ID="ImageLogo" runat="server" ImageUrl="/Images/swarmops-logo-256px.png" Width="128"/></div>        
             <div class="box qrlogin">
                 <div class="content">
-                    <div align="center" id="divLoginQr"></div>
+                    <div align="center" id="divLoginQr" style="height: 400px; width: 400px; padding: 20px"></div>
                     <div id="divLoginManual" style="display:none">
                         <h2><asp:Label runat="server" ID="LabelManualLoginHeader">Manual Login Header XYZ</asp:Label></h2>
                         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding-bottom:5px">
