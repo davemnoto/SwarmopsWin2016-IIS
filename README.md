@@ -35,47 +35,26 @@ This is the plan, at least. "Stable" is a somewhat wide definition at the moment
 Installation
 ------------
 
-Minimum requirements are a 2016+ Debian or Ubuntu LTS. At present (December 2018), this means that the Stretch, Xenial, and Bionic distributions are supported. Further, due to the insane lag of Mono distributions to make it into the official repositories, the most recent Mono is also required. Swarmops will install this for you if you just enable it as detailed below.
+Minimum requirements are a Windows Server 2016. Further, Mono is no longer required. The .NET Framework 4.5.2 is recommended and has native code base that can handle all the functionality of the old MONO software.
 
-If you're daring enough to install a pilot of Swarmops, you're most welcome to do so! It requires Run these commands _as root_ - first, fetch the signing keys for the repositories:
-
+As of this writing, the software has just been branched (August 2025). Expected release date should be around January 2026.
+When ready, you can download this Github repository (SwarmopsWin2016-IIS) using Visual Studio 2019 Community edition using its native Github installation routines.
 ```
+Not sure about the need for the following commands:
 sudo su
 wget -qO- https://packages.swarmops.com/swarmops-packages.gpg.key | apt-key add -
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
 ```
 
-Then, add the Swarmops and Mono repositories to your list of software sources, where [your_distro] is `debian` or `ubuntu`, and [your_distro_version] below is `xenial` or `bionic` (Ubuntu) or `stretch` (Debian):
 
 ```
-echo "deb https://packages.swarmops.com/ [your_distro_version] contrib" > /etc/apt/sources.list.d/swarmops.list
-echo "deb https://download.mono-project.com/repo/[your_distro] stable-[your-distro-version] main" > /etc/apt/sources.list.d/mono-official-stable.list
-```
-
-Make sure you can retrieve packages over secure connections:
 
 ```
-apt install apt-transport-https
-```
 
-Then, run this to install the Swarmops frontend:
 
 ```
-apt update; apt install swarmops-frontend
 ```
-
-If you installed onto a clean server, Swarmops will offer to configure Apache to use Swarmops as the default site. If you decline this offer, you can still enable the site by an `a2ensite swarmops` as a suggested configuration is provided. If you prefer to configure this entirely manually, install a new Virtual Host in Apache, a Mono host, pointing at /usr/share/swarmops/frontend as its directory. We're using /usr/bin/mod-mono-server4 as our server. Note the 4 at the end; many configurators are old and will set a 2 there. See /etc/apache2/sites-available/swarmops.conf for a template file.
-
-Navigate to the new site and continue installation from the running site. To complete the install, you will also need to install a backend process, which can (but shouldn't) run on the same machine; the frontend communicates with the backend through the database and through TCP port 10944:
-
-```
-apt install swarmops-backend
-```
-
-At one point in the installation process, you will be prompted to copy the file `/etc/swarmops/database.config` from the server running swarmops-*frontend* to the server running swarmops-*backend*. This allows the backend to connect to the database as configured by the installation process. Once you do this, the installation process will detect the running backend and the installation will continue.
-
-If you're running into trouble, or are just curious, see the "detailed install instructions" last in this document.
-
+[NOTE: THE info that follows below is legacy and not to be used for this version !!!!!!!!!!! ]
 
 Contributing
 ------------
@@ -116,6 +95,7 @@ That also means that any code _you_ commit to Swarmops, whether by checking in c
 - [ ] Add blockchain-upgrade code that properly splits Core, Cash txs, hashes, accounts
 - [ ] Write a Pay Invoice page for Bitcoin Cash
 - [ ] Tie payment identifiers to people and suppliers
+
 
 
 Detailed install instructions
